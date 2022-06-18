@@ -1,4 +1,4 @@
-use employees;
+use ezwork;
 
 INSERT INTO department
     (name)

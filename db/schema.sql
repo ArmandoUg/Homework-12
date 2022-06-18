@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS employees;
+DROP DATABASE IF EXISTS ezwork;
 
-CREATE DATABASE employees;
+CREATE DATABASE ezwork;
 
-USE employees;
+USE ezwork;
 
 CREATE TABLE department (
   id INT AUTO_INCREMENT PRIMARY KEY,
