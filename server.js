@@ -1,8 +1,9 @@
 const inquirer = require('inquirer');
 const connection = require('./connection');
-
+const startprompt = require('./prompts');
+// require('dotenv').config();
 // const startprompt= {
-//     type: 'list',
+//     type: 'list',++++
 //     name: "start menu",
 //     message:`!!!Welcome to the EZ Employee Manager mk 1.0!!!
 //     What option would you like to choose?`,
@@ -24,14 +25,71 @@ const connection = require('./connection');
 //     ]
 // }
 
-function start() {
-    inquirer.prompt(startprompt).them(response => {
+
+const viewDepartments = () => {
+    connection.query("SELECT * FROM employee").then(results => {
+        console.table(results);
     })
 }
 
-connection.promise().query(
-    `SELECT * FROM information_schema.tables WHERE table_schema = '${process.env.DB_NAME}' AND table_name = 'departments'
-`).then(res => {
-        console.log(res)
+function start() {
+    inquirer.prompt(startprompt).then(answers => {
+        console.log("You picked: " + answers);
+        switch (answers.startMenu) {
+            case "View all departments":
+                viewDepartments();
+                // break;
+        }
     })
-    .catch(err => { console.log(err) });
+    }
+
+    // inquirer.prompt(startprompt).them(response => {
+    //     switch (response.start - menu) {
+    //         case "View all departments":
+    //             viewDepartments();
+    //             break;
+    //         case "View All Roles":
+    //             viewRoles();
+    //             break;
+    //         case "View All Employees":
+    //             viewEmployees();
+    //             break;
+    //         case "Add a new department":
+    //             addDepartment();
+    //             break;
+    //         case "Add a new role":
+    //             addRole();
+    //             break;
+    //         case "Add a new employee":
+    //             addEmployee();
+    //             break;
+    //         case "Update an employee's role":
+    //             updateEmployeeRole();
+    //             break;
+    //         case "Update an employee's manager":
+    //             updateEmployeeManager();
+    //             break;
+    //         case "View all employees by department":
+    //             viewEmployeesByDepartment();
+    //             break;
+    //         case "View all employees by manager":
+    //             viewEmployeesByManager();
+    //             break;
+    //         case "Delete a department":
+    //             deleteDepartment();
+    //             break;
+    //         case "Delete a role":
+    //             deleteRole();
+    //             break;
+    //         case "Delete an employee":
+    //             deleteEmployee();
+    //             break;
+    //         case "Exit":
+    //             exit();
+    //             break;
+    //     }
+    // }
+    // )
+    // }
+
+start();

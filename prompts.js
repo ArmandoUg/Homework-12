@@ -1,7 +1,7 @@
 // const inquirer = require('inquirer');
 const startprompt= {
     type: 'list',
-    name: "start menu",
+    name: "start-menu",
     message:`!!!Welcome to the EZ Employee Manager mk 1.0!!!
     What option would you like to choose?`,
     choices: [
@@ -19,6 +19,6 @@ const startprompt= {
         `Delete a role`,
         `Delete an employee`,
         `Exit`
-    ]
+    ],
 }
 module.exports = startprompt;
