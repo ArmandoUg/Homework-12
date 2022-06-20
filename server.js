@@ -35,10 +35,10 @@ function start() {
             case "View all departments":
                 functions.viewDepartments();
                 break;
-            case "View All Roles":
+            case "View All roles":
                 viewRoles();
                 break;
-            case "View All Employees":
+            case "View All employees":
                 viewEmployees();
                 break;
             case "Add a new department":

@@ -21,4 +21,18 @@ const startprompt= {
         `Exit`
     ],
 }
+
+const addDepartment = {
+    type: 'input',
+    name: 'departmentName',
+    message: 'What is the name of the department you would like to add?'
+}
+
+const addRole = {
+    type: 'input',
+    name: 'roleTitle',
+    message: 'What is the title of the role you would like to add?'
+}
+
+
 module.exports = startprompt;
