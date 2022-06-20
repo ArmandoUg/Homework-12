@@ -35,41 +35,41 @@ function start() {
             case "View all departments":
                 functions.viewDepartments();
                 break;
-            case "View All roles":
-                viewRoles();
+            case "View all roles":
+                functions.viewRoles();
                 break;
-            case "View All employees":
-                viewEmployees();
+            case "View all employees":
+                functions.viewEmployees();
                 break;
             case "Add a new department":
-                addDepartment();
+                functions.addDepartment();
                 break;
             case "Add a new role":
-                addRole();
+                functions.addRole();
                 break;
             case "Add a new employee":
-                addEmployee();
+                functions.addEmployee();
                 break;
             case "Update an employee's role":
-                updateEmployeeRole();
+                functions.updateEmployeeRole();
                 break;
             case "Update an employee's manager":
-                updateEmployeeManager();
+                functions.updateEmployeeManager();
                 break;
             case "View all employees by department":
-                viewEmployeesByDepartment();
+                functions.viewEmployeesByDepartment();
                 break;
             case "View all employees by manager":
-                viewEmployeesByManager();
+                functions.viewEmployeesByManager();
                 break;
             case "Delete a department":
-                deleteDepartment();
+                functions.deleteDepartment();
                 break;
             case "Delete a role":
-                deleteRole();
+                functions.deleteRole();
                 break;
             case "Delete an employee":
-                deleteEmployee();
+                functions.deleteEmployee();
                 break;
             case "Exit":
                 exit();
@@ -79,3 +79,5 @@ function start() {
 }
 
 start();
+
+module.exports = { start };

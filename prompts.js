@@ -34,5 +34,30 @@ const addRole = {
     message: 'What is the title of the role you would like to add?'
 }
 
+const addEmployee = {
+    type: 'input',
+    name: 'employeeName',
+    message: 'What is the name of the employee you would like to add?'
+}
+
+const updateEmployeeRole = {
+    type: `input`,
+    name: `employeeName`,
+    message: `What is the name of the employee you would like to update?`
+}
+
+const updateEmployeeManager = {
+    type: `input`,
+    name: `employeeName`,
+    message: `What is the name of the employee you would like to update?`
+}
+
+const deleteDepartment = {
+    type: `list`,
+    name: `departmentName`,
+    message: `What is the name of the department you would like to delete?`,
+    choices: [
+    ]
+}
 
 module.exports = startprompt;

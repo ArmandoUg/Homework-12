@@ -1,10 +1,10 @@
 const connection = require('./connection');
-
+const start = require(`./server`);
 
 const viewDepartments = () => {
     connection.query("SELECT * FROM department").then(results => {
         console.table(results);
-        setTimeout(start, 2000);
+        setTimeout(start.start, 3000);
     })
 }
 
@@ -21,10 +21,14 @@ const viewEmployees = () => {
 }
 
 const addDepartment = () => {
-    inquirer.prompt([]).then(answers => {
-        connection.query("INSERT INTO department SET ?", answers).then(results => {
-        })
+    inquirer.prompt(addDepartment).then(answers => {
+        connection.query("INSERT INTO department SET ?", {
+            name: answers.departmentName
+        }).then(answers => {
+            console.log(`${answers.departmentName} has been added to the database.`);
+            setTimeout(start.start, 2000);
     })
+})
 }
 
 module.exports = { viewDepartments, viewRoles, viewEmployees, addDepartment };
