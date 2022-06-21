@@ -1,4 +1,5 @@
 const connection = require('./connection');
+const inquirer = require('inquirer');
 const start = require(`./server`);
 
 const viewDepartments = () => {
@@ -6,7 +7,7 @@ const viewDepartments = () => {
         console.log(`------------------------Departments-----------------------------`);
         console.table(results);
         console.log(`-----------------------------------------------------------------`);
-        // setTimeout(start.start, 3000);
+        setTimeout(start.start, 3000);
     })
 }
 
@@ -65,4 +66,4 @@ const addEmployee = () => {
     })
 }
 
-module.exports = { viewDepartments, viewRoles, viewEmployees, addDepartment };
+module.exports = { viewDepartments, viewRoles, viewEmployees, addDepartment, addRole, addEmployee };

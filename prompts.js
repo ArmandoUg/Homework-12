@@ -34,11 +34,25 @@ const addRole = {
     message: 'What is the title of the role you would like to add?'
 }
 
-const addEmployee = {
+const addEmployee = [{
     type: 'input',
     name: 'employeeName',
-    message: 'What is the name of the employee you would like to add?'
+    message: 'What is the first name of the employee you would like to add?'
+},
+{
+    type: 'input',
+    name: 'employeeLastName',
+    message: 'What is the last name of the employee you would like to add?'
+},
+{
+    type: 'list',
+    name: 'employeeRole',
+    message: 'What is the role of the employee you would like to add?',
+    choices: [
+        
+    ]
 }
+]
 
 const updateEmployeeRole = {
     type: `input`,
