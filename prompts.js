@@ -1,4 +1,5 @@
 // const inquirer = require('inquirer');
+
 const startprompt= {
     type: 'list',
     name: "startMenu",
@@ -28,19 +29,6 @@ const addDepartmentprompt = {
     message: 'What is the name of the department you would like to add?'
 }
 
-const addRoleprompt = [{
-    type: 'input',
-    name: 'title',
-    message: 'What is the title of the role you would like to add?'
-}, 
-{
-    type: 'input',
-    name: 'salary',
-    message: 'What will be the salary of the role you would like to add?'
-},
-{
-    
-}]
 
 const addEmployeeprompt = [{
     type: 'input',
@@ -71,11 +59,17 @@ const addEmployeeprompt = [{
     type: 'list',
     name: 'manager_id',
     message: 'What is the manager id for the manager who will be in charge of this new employee?',
+    // todo add a null choice for no manager
     choices: [
         '1',
         `3`,
         `5`,
         `7`,
+        {
+            name: 'No manager',
+            value: null
+        }
+        
     ],
 },
 ]
