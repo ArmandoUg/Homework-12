@@ -69,6 +69,7 @@ function start() {
     })
     .catch(err => {
         console.log("Error: Something went wrong " + err);
+        process.exit();
     })
 }
 

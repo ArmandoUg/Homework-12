@@ -215,6 +215,29 @@ const deleteRole = () => {
     })
 }
 
+const deleteEmployee = () => {
+    connection.query("SELECT * FROM employee").then(results => {
+        const employeechoices = results.map(employee => {
+            return {
+                name: `${employee.first_name} ${employee.last_name}`,
+}
+        })
+        inquirer.prompt([{
+            type: 'list',
+            name: 'employee_id',
+            message: 'Which employee would you like to delete?',
+            choices: employeechoices
+        }
+        ]).then(answers => {
+            connection.query("DELETE FROM employee WHERE ?", {
+                id: answers.employee_id
+            }).then(answers => {
+                console.log(`Employee has been deleted.`);
+                return restart();
+            })
+        })
+    })
+}
 
 
 const restart = () => {
@@ -258,6 +281,7 @@ const restart = () => {
     })
         .catch(err => {
             console.log("Error: Something went wrong " + err);
+            process.exit(1);
         })
 }
 
@@ -267,4 +291,4 @@ function exit() {
 }
 
 module.exports = { viewDepartments, viewRoles, viewEmployees, addDepartment, addRole, addEmployee, 
-    updateEmployeeRole, deleteDepartment, deleteRole, restart, exit };
+    updateEmployeeRole, deleteDepartment, deleteRole, deleteEmployee, restart, exit };
