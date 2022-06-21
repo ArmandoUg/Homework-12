@@ -74,11 +74,17 @@ const addEmployeeprompt = [{
 },
 ]
 
-const updateEmployeeRoleprompt = {
-    type: `input`,
-    name: `employeeName`,
-    message: `What is the name of the employee you would like to update?`
-}
+// const updateEmployeeRoleprompt = [{
+//     type: `input`,
+//     name: `employeeName`,
+//     message: `What is the name of the employee you would like to update?`
+// },
+// {
+//     type: `list`,
+//     name: `role_id`,
+//     message: `What is the role id of the employee you would like to update?`,
+//     choices: []
+// }]
 
 const updateEmployeeManagerprompt = {
     type: `input`,
@@ -94,4 +100,4 @@ const deleteDepartmentprompt = {
     ]
 }
 
-module.exports = {startprompt , addDepartmentprompt, addRoleprompt, addEmployeeprompt, updateEmployeeRoleprompt, updateEmployeeManagerprompt, deleteDepartmentprompt};
+module.exports = {startprompt , addDepartmentprompt, addEmployeeprompt,  updateEmployeeManagerprompt, deleteDepartmentprompt};

@@ -76,6 +76,9 @@ function start() {
                 break;
         }
     })
+    .catch(err => {
+        console.log("Error: Something went wrong " + err);
+    })
 }
 
 
