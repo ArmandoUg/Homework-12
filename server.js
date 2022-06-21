@@ -34,7 +34,7 @@ function start() {
         switch (answers.startMenu) {
             case "View all departments":
                 functions.viewDepartments();
-                break;
+                return start();
             case "View all roles":
                 functions.viewRoles();
                 break;
