@@ -87,4 +87,4 @@ const addEmployeeprompt = [{
 // }]
 
 
-module.exports = {startprompt , addDepartmentprompt, addEmployeeprompt,  updateEmployeeManagerprompt, deleteDepartmentprompt};
+module.exports = {startprompt , addDepartmentprompt, addEmployeeprompt};

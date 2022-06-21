@@ -136,33 +136,34 @@ const updateEmployeeRole = () => {
                     name: role.title,
                     value: role.id
                 }
-        })
-        inquirer.prompt([{
-            type: 'list',
-            name: 'employee_id',
-            message: 'Which employee would you like to update?',
-            choices: employeechoices
-        },
-        {
-            type: 'list',
-            name: 'role_id',
-            message: 'What role would you like to assign?',
-            choices: rolechoices
-        }
-        ]).then(answers => {
-
-            connection.query("UPDATE employee SET ? WHERE ?", [{
-                role_id: answers.role_id
+            })
+            inquirer.prompt([{
+                type: 'list',
+                name: 'employee_id',
+                message: 'Which employee would you like to update?',
+                choices: employeechoices
             },
             {
-                id: answers.employee_id
+                type: 'list',
+                name: 'role_id',
+                message: 'What role would you like to assign?',
+                choices: rolechoices
             }
             ]).then(answers => {
-                console.log(`Employee has been updated.`);
+
+                connection.query("UPDATE employee SET ? WHERE ?", [{
+                    role_id: answers.role_id
+                },
+                {
+                    id: answers.employee_id
+                }
+                ]).then(answers => {
+                    console.log(`Employee has been updated.`);
+                    return restart();
+                })
             })
         })
     })
-})
 }
 
 const deleteDepartment = () => {
@@ -178,18 +179,43 @@ const deleteDepartment = () => {
             name: 'department_id',
             message: 'Which department would you like to delete?',
             choices: departmentchoices
-}
+        }
         ]).then(answers => {
             connection.query("DELETE FROM department WHERE ?", {
                 id: answers.department_id
             }).then(answers => {
                 console.log(`Department has been deleted.`);
+                return restart();
             })
         })
     })
 }
 
-const deleteRole = () => {}
+const deleteRole = () => {
+    connection.query("SELECT * FROM role").then(results => {
+        const rolechoices = results.map(role => {
+            return {
+                name: role.title,
+                value: role.id
+            }
+        })
+        inquirer.prompt([{
+            type: 'list',
+            name: 'role_id',
+            message: 'Which role would you like to delete?',
+            choices: rolechoices
+        }]).then(answers => {
+            connection.query("DELETE FROM role WHERE ?", {
+                id: answers.role_id
+            }).then(answers => {
+                console.log(`Role has been deleted.`);
+                return restart();
+            })
+        })
+    })
+}
+
+
 
 const restart = () => {
     inquirer.prompt(prompts.startprompt).then(answers => {
@@ -230,9 +256,9 @@ const restart = () => {
                 break;
         }
     })
-    .catch(err => {
-        console.log("Error: Something went wrong " + err);
-    })
+        .catch(err => {
+            console.log("Error: Something went wrong " + err);
+        })
 }
 
 function exit() {
@@ -240,4 +266,5 @@ function exit() {
     connection.end();
 }
 
-module.exports = { viewDepartments, viewRoles, viewEmployees, addDepartment, addRole, addEmployee, updateEmployeeRole, restart, exit };
+module.exports = { viewDepartments, viewRoles, viewEmployees, addDepartment, addRole, addEmployee, 
+    updateEmployeeRole, deleteDepartment, deleteRole, restart, exit };
