@@ -28,11 +28,19 @@ const addDepartmentprompt = {
     message: 'What is the name of the department you would like to add?'
 }
 
-const addRoleprompt = {
+const addRoleprompt = [{
     type: 'input',
-    name: 'roleTitle',
+    name: 'title',
     message: 'What is the title of the role you would like to add?'
-}
+}, 
+{
+    type: 'input',
+    name: 'salary',
+    message: 'What will be the salary of the role you would like to add?'
+},
+{
+    
+}]
 
 const addEmployeeprompt = [{
     type: 'input',
@@ -49,20 +57,20 @@ const addEmployeeprompt = [{
     name: 'role_id',
     message: 'What is the role id of the employee you would like to add?',
     choices: [
-        'Sales Lead',
-        'Salesperson',
-        'Lead Engineer',
-        'Software Engineer',
-        `Account Manager`,
-        'Accountant',
-        'Legal Team Lead',
-        `Lawyer`
+        '1',
+        '2',
+        '3',
+        '4',
+        `5`,
+        '6',
+        '7',
+        `8`,
     ],
 },
 {
     type: 'list',
     name: 'manager_id',
-    message: 'What is the manager id for the manager in charge of employee you would like to add?',
+    message: 'What is the manager id for the manager who will be in charge of this new employee?',
     choices: [
         '1',
         `3`,

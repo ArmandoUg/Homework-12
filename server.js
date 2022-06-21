@@ -78,6 +78,11 @@ function start() {
     })
 }
 
+
+function exit() {
+    console.log("Goodbye!");
+}
+
 start();
 
-module.exports = { start };
+// module.exports = { start, exit };
