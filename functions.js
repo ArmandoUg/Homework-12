@@ -101,23 +101,67 @@ const addRole = () => {
 
 const addEmployee = () => {
     connection.query("SELECT * FROM employee").then(employees => {
-        console.table(employees);
-        connection.query("SELECT * FROM role").then(roles => {
-            console.table(roles);
-
+        const employeechoices = employees.map(employee => {
+            return {
+                name: employee.first_name + " " + employee.last_name,
+                value: employee.id
+            }
         })
-    });
-    inquirer.prompt(prompts.addEmployeeprompt).then(answers => {
+        connection.query("SELECT * FROM role").then(roles => {
+            const rolechoices = roles.map(role => {
+                return {
+                    name: role.title,
+                    value: role.id
+                }
+            })
+            inquirer.prompt([{
+                type: 'input',
+                name: 'first_name',
+                message: 'What is the first name of the employee you would like to add to the team?'
+            },
+            {
+                type: 'input',
+                name: 'last_name',
+                message: 'What is the last name of the employee you would like to add to the team?'
+            },
+            {
+                type: 'list',
+                name: 'role_id',
+                message: 'What is the role for the employee you would like to add to the team?',
+                choices: rolechoices
+            },
+            {
+                type: 'list',
+                name: 'manager_id',
+                message: 'Who is the manager for the employee you would like to add to the team?',
+                choices: [employeechoices, {    name: 'None', value: null }]
+            }
+            ]).then(answers => {
+                console.log(answers);
+                connection.query("INSERT INTO employee SET ?", {
+                    first_name: answers.first_name,
+                    last_name: answers.last_name,
+                    role_id: answers.role_id,
+                    manager_id: answers.manager_id
+                }).then(answers => {
+                    console.log(`${answers.first_name} ${answers.last_name} has been added to the database.`);
+                    // setTimeout(restart, 2000);
+                    return restart();
+                })
+            })
+        });
+        inquirer.prompt(prompts.addEmployeeprompt).then(answers => {
 
-        connection.query("INSERT INTO employee SET ?", {
-            first_name: answers.first_name,
-            last_name: answers.last_name,
-            role_id: answers.role_id,
-            manager_id: answers.manager_id
-        }).then(answers => {
-            console.log(`${answers.first_name} ${answers.last_name} has been added to the database.`);
-            // setTimeout(restart, 2000);
-            return restart();
+            connection.query("INSERT INTO employee SET ?", {
+                first_name: answers.first_name,
+                last_name: answers.last_name,
+                role_id: answers.role_id,
+                manager_id: answers.manager_id
+            }).then(answers => {
+                console.log(`${answers.first_name} ${answers.last_name} has been added to the database.`);
+                // setTimeout(restart, 2000);
+                return restart();
+            })
         })
     })
 }
@@ -220,7 +264,7 @@ const deleteEmployee = () => {
         const employeechoices = results.map(employee => {
             return {
                 name: `${employee.first_name} ${employee.last_name}`,
-}
+            }
         })
         inquirer.prompt([{
             type: 'list',
@@ -290,5 +334,7 @@ function exit() {
     connection.end();
 }
 
-module.exports = { viewDepartments, viewRoles, viewEmployees, addDepartment, addRole, addEmployee, 
-    updateEmployeeRole, deleteDepartment, deleteRole, deleteEmployee, restart, exit };
+module.exports = {
+    viewDepartments, viewRoles, viewEmployees, addDepartment, addRole, addEmployee,
+    updateEmployeeRole, deleteDepartment, deleteRole, deleteEmployee, restart, exit
+};

@@ -13,9 +13,6 @@ const startprompt= {
         `Add a new role`,
         `Add a new employee`,
         `Update an employee's role`,
-        `Update an employee's manager`,
-        `View all employees by department`,
-        `View all employees by manager`,
         `Delete a department`,
         `Delete a role`,
         `Delete an employee`,
@@ -30,49 +27,49 @@ const addDepartmentprompt = {
 }
 
 
-const addEmployeeprompt = [{
-    type: 'input',
-    name: 'first_name',
-    message: 'What is the first name of the employee you would like to add?'
-},
-{
-    type: 'input',
-    name: 'last_name',
-    message: 'What is the last name of the employee you would like to add?'
-},
-{
-    type: 'list',
-    name: 'role_id',
-    message: 'What is the role id of the employee you would like to add?',
-    choices: [
-        '1',
-        '2',
-        '3',
-        '4',
-        `5`,
-        '6',
-        '7',
-        `8`,
-    ],
-},
-{
-    type: 'list',
-    name: 'manager_id',
-    message: 'What is the manager id for the manager who will be in charge of this new employee?',
-    // todo add a null choice for no manager
-    choices: [
-        '1',
-        `3`,
-        `5`,
-        `7`,
-        {
-            name: 'No manager',
-            value: null
-        }
+// const addEmployeeprompt = [{
+//     type: 'input',
+//     name: 'first_name',
+//     message: 'What is the first name of the employee you would like to add?'
+// },
+// {
+//     type: 'input',
+//     name: 'last_name',
+//     message: 'What is the last name of the employee you would like to add?'
+// },
+// {
+//     type: 'list',
+//     name: 'role_id',
+//     message: 'What is the role id of the employee you would like to add?',
+//     choices: [
+//         '1',
+//         '2',
+//         '3',
+//         '4',
+//         `5`,
+//         '6',
+//         '7',
+//         `8`,
+//     ],
+// },
+// {
+//     type: 'list',
+//     name: 'manager_id',
+//     message: 'What is the manager id for the manager who will be in charge of this new employee?',
+//     // todo add a null choice for no manager
+//     choices: [
+//         '1',
+//         `3`,
+//         `5`,
+//         `7`,
+//         {
+//             name: 'No manager',
+//             value: null
+//         }
         
-    ],
-},
-]
+//     ],
+// },
+// ]
 
 // const updateEmployeeRoleprompt = [{
 //     type: `input`,
@@ -87,4 +84,4 @@ const addEmployeeprompt = [{
 // }]
 
 
-module.exports = {startprompt , addDepartmentprompt, addEmployeeprompt};
+module.exports = {startprompt , addDepartmentprompt};
