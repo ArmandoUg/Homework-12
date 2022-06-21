@@ -22,51 +22,69 @@ const startprompt= {
     ],
 }
 
-const addDepartment = {
+const addDepartmentprompt = {
     type: 'input',
     name: 'departmentName',
     message: 'What is the name of the department you would like to add?'
 }
 
-const addRole = {
+const addRoleprompt = {
     type: 'input',
     name: 'roleTitle',
     message: 'What is the title of the role you would like to add?'
 }
 
-const addEmployee = [{
+const addEmployeeprompt = [{
     type: 'input',
-    name: 'employeeName',
+    name: 'first_name',
     message: 'What is the first name of the employee you would like to add?'
 },
 {
     type: 'input',
-    name: 'employeeLastName',
+    name: 'last_name',
     message: 'What is the last name of the employee you would like to add?'
 },
 {
     type: 'list',
-    name: 'employeeRole',
-    message: 'What is the role of the employee you would like to add?',
+    name: 'role_id',
+    message: 'What is the role id of the employee you would like to add?',
     choices: [
-        
-    ]
-}
+        'Sales Lead',
+        'Salesperson',
+        'Lead Engineer',
+        'Software Engineer',
+        `Account Manager`,
+        'Accountant',
+        'Legal Team Lead',
+        `Lawyer`
+    ],
+},
+{
+    type: 'list',
+    name: 'manager_id',
+    message: 'What is the manager id for the manager in charge of employee you would like to add?',
+    choices: [
+        '1',
+        `3`,
+        `5`,
+        `7`,
+    ],
+},
 ]
 
-const updateEmployeeRole = {
+const updateEmployeeRoleprompt = {
     type: `input`,
     name: `employeeName`,
     message: `What is the name of the employee you would like to update?`
 }
 
-const updateEmployeeManager = {
+const updateEmployeeManagerprompt = {
     type: `input`,
     name: `employeeName`,
     message: `What is the name of the employee you would like to update?`
 }
 
-const deleteDepartment = {
+const deleteDepartmentprompt = {
     type: `list`,
     name: `departmentName`,
     message: `What is the name of the department you would like to delete?`,
@@ -74,4 +92,4 @@ const deleteDepartment = {
     ]
 }
 
-module.exports = startprompt;
+module.exports = {startprompt , addDepartmentprompt, addRoleprompt, addEmployeeprompt, updateEmployeeRoleprompt, updateEmployeeManagerprompt, deleteDepartmentprompt};

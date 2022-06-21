@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 // const connection = require('./connection');
 const functions = require('./functions');
-const startprompt = require('./prompts');
+const prompts = require('./prompts');
 const cTable = require('console.table');
 // const viewDepartments = require('./functions');
 // const startprompt= {
@@ -29,7 +29,7 @@ const cTable = require('console.table');
 
 
 function start() {
-    inquirer.prompt(startprompt).then(answers => {
+    inquirer.prompt(prompts.startprompt).then(answers => {
         console.log("You picked: " + answers.startMenu);
         switch (answers.startMenu) {
             case "View all departments":
