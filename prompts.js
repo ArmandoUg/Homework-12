@@ -86,18 +86,5 @@ const addEmployeeprompt = [{
 //     choices: []
 // }]
 
-const updateEmployeeManagerprompt = {
-    type: `input`,
-    name: `employeeName`,
-    message: `What is the name of the employee you would like to update?`
-}
-
-const deleteDepartmentprompt = {
-    type: `list`,
-    name: `departmentName`,
-    message: `What is the name of the department you would like to delete?`,
-    choices: [
-    ]
-}
 
 module.exports = {startprompt , addDepartmentprompt, addEmployeeprompt,  updateEmployeeManagerprompt, deleteDepartmentprompt};

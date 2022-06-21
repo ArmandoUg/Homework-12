@@ -165,6 +165,31 @@ const updateEmployeeRole = () => {
 })
 }
 
+const deleteDepartment = () => {
+    connection.query("SELECT * FROM department").then(results => {
+        const departmentchoices = results.map(department => {
+            return {
+                name: department.name,
+                value: department.id
+            }
+        })
+        inquirer.prompt([{
+            type: 'list',
+            name: 'department_id',
+            message: 'Which department would you like to delete?',
+            choices: departmentchoices
+}
+        ]).then(answers => {
+            connection.query("DELETE FROM department WHERE ?", {
+                id: answers.department_id
+            }).then(answers => {
+                console.log(`Department has been deleted.`);
+            })
+        })
+    })
+}
+
+const deleteRole = () => {}
 
 const restart = () => {
     inquirer.prompt(prompts.startprompt).then(answers => {
@@ -190,15 +215,6 @@ const restart = () => {
                 break;
             case "Update an employee's role":
                 updateEmployeeRole();
-                break;
-            case "Update an employee's manager":
-                updateEmployeeManager();
-                break;
-            case "View all employees by department":
-                viewEmployeesByDepartment();
-                break;
-            case "View all employees by manager":
-                viewEmployeesByManager();
                 break;
             case "Delete a department":
                 deleteDepartment();

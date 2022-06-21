@@ -53,15 +53,6 @@ function start() {
             case "Update an employee's role":
                 functions.updateEmployeeRole();
                 break;
-            case "Update an employee's manager":
-                functions.updateEmployeeManager();
-                break;
-            case "View all employees by department":
-                functions.viewEmployeesByDepartment();
-                break;
-            case "View all employees by manager":
-                functions.viewEmployeesByManager();
-                break;
             case "Delete a department":
                 functions.deleteDepartment();
                 break;
