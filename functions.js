@@ -100,15 +100,15 @@ const addRole = () => {
 }
 
 const addEmployee = () => {
-    connection.query("SELECT * FROM employee").then(employees => {
-        const employeechoices = employees.map(employee => {
+    connection.query("SELECT * FROM employee").then(employee => {
+        const employeechoices = employee.map(employee => {
             return {
                 name: employee.first_name + " " + employee.last_name,
                 value: employee.id
             }
         })
-        connection.query("SELECT * FROM role").then(roles => {
-            const rolechoices = roles.map(role => {
+        connection.query("SELECT * FROM role").then(role => {
+            const rolechoices = role.map(role => {
                 return {
                     name: role.title,
                     value: role.id
@@ -134,7 +134,7 @@ const addEmployee = () => {
                 type: 'list',
                 name: 'manager_id',
                 message: 'Who is the manager for the employee you would like to add to the team?',
-                choices: [employeechoices, {    name: 'None', value: null }]
+                choices: [...employeechoices, {    name: 'None', value: null }]
             }
             ]).then(answers => {
                 console.log(answers);
@@ -144,27 +144,25 @@ const addEmployee = () => {
                     role_id: answers.role_id,
                     manager_id: answers.manager_id
                 }).then(answers => {
-                    console.log(`${answers.first_name} ${answers.last_name} has been added to the database.`);
+                    console.log(`New Employee has been added to the database.`);
                     // setTimeout(restart, 2000);
                     return restart();
                 })
             })
         });
-        inquirer.prompt(prompts.addEmployeeprompt).then(answers => {
+        // inquirer.prompt(prompts.addEmployeeprompt).then(answers => {
 
-            connection.query("INSERT INTO employee SET ?", {
-                first_name: answers.first_name,
-                last_name: answers.last_name,
-                role_id: answers.role_id,
-                manager_id: answers.manager_id
-            }).then(answers => {
-                console.log(`${answers.first_name} ${answers.last_name} has been added to the database.`);
-                // setTimeout(restart, 2000);
-                return restart();
+        //     connection.query("INSERT INTO employee SET ?", {
+        //         first_name: answers.first_name,
+        //         last_name: answers.last_name,
+        //         role_id: answers.role_id,
+        //         manager_id: answers.manager_id
+        //     }).then(answers => {
+        //         console.log(`${answers.first_name} ${answers.last_name} has been added to the database.`);
+        //         // setTimeout(restart, 2000);
+        //         return restart();
             })
-        })
-    })
-}
+        }
 
 const updateEmployeeRole = () => {
     connection.query("SELECT * FROM employee").then(employees => {
@@ -264,6 +262,7 @@ const deleteEmployee = () => {
         const employeechoices = results.map(employee => {
             return {
                 name: `${employee.first_name} ${employee.last_name}`,
+                value: employee.id
             }
         })
         inquirer.prompt([{

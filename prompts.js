@@ -3,7 +3,10 @@
 const startprompt= {
     type: 'list',
     name: "startMenu",
-    message:`!!!Welcome to the EZ Employee Manager mk 1.0!!!
+    message:
+    `    ______--------_______-------_____-------_____-----___
+    |!!!Welcome to the EZ Employee Manager mk 1.0!!!!!!!!!|
+    |_____--------_______-------_____-------_____-----____|
     What option would you like to choose?`,
     choices: [
         `View all departments`,
